@@ -83,7 +83,15 @@ public class MainActivity extends AppCompatActivity {
         typeSmallNameList03.add("人文素质");
         mDatas.add(new CourseTypeEntity("旅游",typeSmallNameList03));
 
-        mDatas.add(new CourseTypeEntity("资源开发与测试",new ArrayList<String>()));
+        List<String> typeSmallNameList04 = new ArrayList<>();
+        typeSmallNameList04.add("资源勘查");
+        typeSmallNameList04.add("地质工程与技术");
+        typeSmallNameList04.add("矿业工程");
+        typeSmallNameList04.add("石油与天然气");
+        typeSmallNameList04.add("矿物加工");
+        typeSmallNameList04.add("测绘");
+        mDatas.add(new CourseTypeEntity("资源开发与测试",typeSmallNameList04));
+
         mAdapter.notifyDataSetChanged();
     }
 }
