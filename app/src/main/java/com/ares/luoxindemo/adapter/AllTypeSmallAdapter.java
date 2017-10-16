@@ -22,13 +22,13 @@ import java.util.List;
  * ====================================
  */
 
-public class CourseTypeSmallAdapter extends RecyclerView.Adapter<CourseTypeSmallAdapter.VH>{
+public class AllTypeSmallAdapter extends RecyclerView.Adapter<AllTypeSmallAdapter.VH>{
 
     private Context mContext;
     private List<String> mDatas;
     private LayoutInflater layoutInflater;
 
-    public CourseTypeSmallAdapter(Context mContext, List<String> mDatas) {
+    public AllTypeSmallAdapter(Context mContext, List<String> mDatas) {
         this.mContext = mContext;
         this.mDatas = mDatas;
         this.layoutInflater = LayoutInflater.from(mContext);

@@ -1,57 +1,58 @@
-package com.ares.luoxindemo;
+package com.ares.luoxindemo.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+import com.ares.luoxindemo.CommonItemDetation;
+import com.ares.luoxindemo.R;
 import com.ares.luoxindemo.adapter.AllTypeAdapter;
 import com.ares.luoxindemo.entity.CourseTypeEntity;
-import com.ares.luoxindemo.fragment.AllTypeFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * ====================================
+ * 作    者：Ares(颜崔)
+ * 地    址：https://github.com/Ares-yc
+ * 描    述：
+ * 版    本：1.0.0
+ * 创建时间：2017/10/16.
+ * 修改时间：2017/10/16.
+ * ====================================
+ */
 
-    private DrawerLayout mDrawerLayout;
-    private RecyclerView leftMenuContent;
+public class AllTypeFragment extends Fragment{
+
+    private RecyclerView contentRv;
     private List<CourseTypeEntity> mDatas;
     private AllTypeAdapter mAdapter;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        initView();
-        initListener();
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_all_type,container,false);
+        initView(view);
         initData();
+        return view;
     }
 
-    private void initView() {
-        leftMenuContent = (RecyclerView) findViewById(R.id.rv_fragment_all_type_content);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.fl_activity_main_left_drawer);
-        mDrawerLayout.setDrawerShadow(R.drawable.drawer_bg, GravityCompat.START);
-
-        AllTypeFragment allTypeFragment = new AllTypeFragment();
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fl_activity_main_content,allTypeFragment);
-        ft.commit();
+    private void initView(View view) {
+        contentRv = (RecyclerView) view.findViewById(R.id.rv_fragment_all_type_content);
 
         mDatas = new ArrayList<>();
 
-        mAdapter = new AllTypeAdapter(this,mDatas);
+        mAdapter = new AllTypeAdapter(getContext(),mDatas);
 
-        leftMenuContent.setLayoutManager(new LinearLayoutManager(this));
-        leftMenuContent.setAdapter(mAdapter);
-        leftMenuContent.addItemDecoration(new CommonItemDetation(this,R.drawable.divider_ee_10));
-    }
-
-    private void initListener() {
+        contentRv.setLayoutManager(new LinearLayoutManager(getContext()));
+        contentRv.setAdapter(mAdapter);
+        contentRv.addItemDecoration(new CommonItemDetation(getContext(),R.drawable.divider_ee_10));
 
     }
 

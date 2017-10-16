@@ -25,13 +25,13 @@ import java.util.List;
  * ====================================
  */
 
-public class CourseTypeAdapter extends RecyclerView.Adapter<CourseTypeAdapter.VH>{
+public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.VH>{
 
     private Context mContext;
     private List<CourseTypeEntity> mDatas;
     private LayoutInflater layoutInflater;
 
-    public CourseTypeAdapter(Context mContext, List<CourseTypeEntity> mDatas) {
+    public AllTypeAdapter(Context mContext, List<CourseTypeEntity> mDatas) {
         this.mContext = mContext;
         this.mDatas = mDatas;
         this.layoutInflater = LayoutInflater.from(mContext);
@@ -49,11 +49,11 @@ public class CourseTypeAdapter extends RecyclerView.Adapter<CourseTypeAdapter.VH
         holder.nameTv.setText(entity.typeName);
         if (entity.typeSmallNameList != null && entity.typeSmallNameList.size() > 0){
             holder.smallRv.setLayoutManager(new GridLayoutManager(mContext,2));
-            CourseTypeSmallAdapter adapter = new CourseTypeSmallAdapter(mContext,entity.typeSmallNameList);
+            AllTypeSmallAdapter adapter = new AllTypeSmallAdapter(mContext,entity.typeSmallNameList);
             holder.smallRv.setAdapter(adapter);
             entity.isOpen = true;
         }
-        holder.arrowIv.setBackgroundResource(entity.isOpen ? R.drawable.ic_arrow_down : R.drawable.ic_arrow_right);
+//        holder.arrowIv.setBackgroundResource(entity.isOpen ? R.drawable.ic_arrow_down : R.drawable.ic_arrow_right);
         switch (entity.typeName) {
             case "全部课程":
                 holder.iconIv.setBackgroundResource(R.drawable.ic_menu_all);
