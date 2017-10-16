@@ -55,7 +55,7 @@ public class AllTypeAdapter extends RecyclerView.Adapter<AllTypeAdapter.VH>{
         }
 //        holder.arrowIv.setBackgroundResource(entity.isOpen ? R.drawable.ic_arrow_down : R.drawable.ic_arrow_right);
         switch (entity.typeName) {
-            case "全部课程":
+            case "全部分类":
                 holder.iconIv.setBackgroundResource(R.drawable.ic_menu_all);
                 break;
             case "财经":
